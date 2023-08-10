@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "devStart": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,16 @@
   "bugs": {
     "url": "https://github.com/Chapjae/sillyCode_valley/issues"
   },
-  "homepage": "https://github.com/Chapjae/sillyCode_valley#readme"
+  "homepage": "https://github.com/Chapjae/sillyCode_valley#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.0",
+    "sequelize": "^6.32.1",
+    "socket.io": "^4.7.2",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
