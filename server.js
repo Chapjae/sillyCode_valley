@@ -11,7 +11,7 @@ const routes = require("./controllers");
 const {v4: uuidv4} = require("uuid");
 // const helpers = require("./utils/helpers");
 
-// const sequelize = require("./config/connection");
+const sequelize = require("./config/connection");
 // const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 // const PORT = process.env.PORT || 3000
@@ -20,7 +20,7 @@ const {v4: uuidv4} = require("uuid");
 // const hbs = exphbs.create({helpers});
 
 // const sess = {
-//   secret: "Test secret",
+//   secret: process.env.SECRET_KEY,
 //   cooke:{},
 //   resave: false,
 //   saveUninitialized: true,
