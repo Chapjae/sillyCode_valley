@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
-const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
+
+class VideoTag extends Model {}
 
 VideoTag.init(
   {
@@ -32,7 +33,7 @@ VideoTag.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "comment",
+    modelName: "video_tag",
   }
 );
 
