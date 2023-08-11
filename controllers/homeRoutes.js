@@ -1,14 +1,30 @@
 const router = require("express").Router();
 // let socket = io()
-// const { createServer } = require("http");
-// const { Server } = require("socket.io");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+const {v4: uuidv4} = require("uuid")
 
-// const httpServer = createServer();
-// const io = new Server(httpServer, { /* options */ });
+const httpServer = createServer();
+const io = new Server(httpServer, { /* options */ });
 
-// io.on("connection", (socket) => {
-//   // ...
-// });
+router.get("/", (req, res) => {
+  res.redirect(`/${uuidv4()}`)
+})
+
+router.get("/:room", (req, res) => {
+  res.render("room", {roomid: req.params.room})
+});
+
+io.on("connection", socket => {
+  socket.on('join-room', (roomId, userId) => {
+    socket.join(roomId)
+    socket.to(roomId).broadcast.emit('user-connected', userId)
+
+    socket.on('disconnect', () => {
+      socket.to(roomId).broadcast.emit('user-disconnected', userId)
+    })
+  })
+});
 
 
 // const {v4 : uuidv4} = require("uuid");
