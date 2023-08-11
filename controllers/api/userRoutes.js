@@ -1,35 +1,71 @@
 const router = require("express").Router();
-
-// Placeholder route for getting a list of users
-router.get("/", (req, res) => {
-  res.send("Get all users");
-});
-
-// Placeholder route for getting a specific user by ID
-router.get("/:id", (req, res) => {
-  const userId = req.params.id;
-  res.send(`Get user with ID: ${userId}`);
-});
+const { User } = require('../../models');
 
 // Placeholder route for creating a new user
-router.post("/", (req, res) => {
-  // send user data in the request body
-  const userData = req.body;
-  res.send("Create a new user");
+router.post('/', async (req, res) => {
+  try {
+    const userData = await User.create(req.body);
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
-// Placeholder route for updating a user
-router.put("/:id", (req, res) => {
-  const userId = req.params.id;
-  // Assuming you'll send updated user data in the request body
-  const updatedUserData = req.body;
-  res.send(`Update user with ID: ${userId}`);
+// for loggin in
+router.post('/login', async (req, res) => {
+  try {
+    const userData = await User.findOne({ where: { email: req.body.email } });
+
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+
+    const validPassword = await userData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      
+      res.json({ user: userData, message: 'You are now logged in!' });
+    });
+
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
-// Placeholder route for deleting a user
-router.delete("/:id", (req, res) => {
-  const userId = req.params.id;
-  res.send(`Delete user with ID: ${userId}`);
+// // Placeholder route for updating a user
+// router.put("/:id", (req, res) => {
+//   const userId = req.params.id;
+//   // Assuming you'll send updated user data in the request body
+//   const updatedUserData = req.body;
+//   res.send(`Update user with ID: ${userId}`);
+// });
+
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
 });
 
 module.exports = router;
