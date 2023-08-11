@@ -9,7 +9,7 @@ const routes = require("./controllers");
 // const helpers = require("./utils/helpers");
 
 // const sequelize = require("./config/connection");
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
+// const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const PORT = process.env.PORT || 3000
 
@@ -29,7 +29,7 @@ const hbs = exphbs.create({helpers});
 // app.use(session(sess));
 
 // might need to use app.engine("templateLanguageName", something.engine) here
-app.engine("handlebars", hbs.engine)
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
