@@ -2,6 +2,9 @@ const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
+class Video extends Model {}
+
+
 Video.init(
   {
     id: {
