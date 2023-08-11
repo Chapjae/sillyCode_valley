@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const server = require("http").Server(app);
+const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const {engine} = require("express-handlebars");
 const path = require("path");
@@ -11,7 +11,7 @@ const routes = require("./controllers");
 // const sequelize = require("./config/connection");
 // const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-const PORT = process.env.PORT || 3000
+// const PORT = process.env.PORT || 3000
 
 // setup handlebars below if we decide to stick with it as a templating language 
 // const hbs = exphbs.create({helpers});
@@ -27,7 +27,7 @@ const PORT = process.env.PORT || 3000
 // };
 
 // app.use(session(sess));
-
+io.on("connection")
 // might need to use app.engine("templateLanguageName", something.engine) here
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
@@ -42,4 +42,3 @@ app.use(routes);
 // });
 
 
-server.listen(3000)
