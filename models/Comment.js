@@ -16,9 +16,10 @@ Comment.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    created_on: {
+    created_on: { 
       type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     user_id: {
         type: DataTypes.INTEGER,
