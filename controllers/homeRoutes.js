@@ -1,11 +1,11 @@
 const router = require("express").Router();
 // let socket = io()
-const { createServer } = require("http");
-const { Server } = require("socket.io");
+// const { createServer } = require("http");
+const server = require("http").createServer();
+const io = require("socket.io")(server)
 const {v4: uuidv4} = require("uuid")
 
-const httpServer = createServer();
-const io = new Server(httpServer, { /* options */ });
+// const httpServer = createServer();
 
 router.get("/", (req, res) => {
   res.redirect(`/${uuidv4()}`)
@@ -47,3 +47,4 @@ io.on("connection", socket => {
 
 
 module.exports = router
+server.listen(3000)
