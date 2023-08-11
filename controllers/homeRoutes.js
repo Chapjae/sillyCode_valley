@@ -9,7 +9,6 @@ io.on("connection", (socket) => {
   // ...
 });
 
-
 const {v4 : uuidv4} = require("uuid");
 
 router.get("/", (req, res) => {
