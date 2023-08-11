@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS videos_db;
+CREATE DATABASE videos_db;
