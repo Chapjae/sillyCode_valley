@@ -1,0 +1,29 @@
+{{!-- the autoplay attribute specifies that the video should start playing automaticcaly when the page loads --}}
+{{!-- The video player will have controls for playback --}}
+<body>
+    <div class="video-container">
+        <video controls autoplay>
+            <source src="path_to_your_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+<div class="comment-section">
+    <h2>Comments</h2>
+    <div class="comments">
+        {{#each comments}}
+        <div class="comment">
+            <p>{{username}}: {{commentText}}</p>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+
+    <div class="button-container">
+        <button class="back-button">Back</button>
+        <button class="review-button">Write a Review</button>
+    </div>
+
+    <!-- Include your scripts here if needed -->
+</body>
