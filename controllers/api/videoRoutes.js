@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const cloudinary = require("cloudinary").v2; // Assuming you've set up Cloudinary
+const cloudinary = require("cloudinary").v2; // Setting up Cloudinery
 const { v4: uuidv4 } = require("uuid");
-const { OpenVidu } = require("openvidu-node-client"); // Assuming you're using OpenVidu for WebRTC
+const { OpenVidu } = require("openvidu-node-client"); // using OpenVidu for WebRTC
 
 // Initialize Cloudinary
 // Replace with our cloud name when we get it HERE
@@ -12,6 +12,7 @@ cloudinary.config({
 });
 
 // Initialize OpenVidu, replace this with out open video config??
+// WEB RTC uses this config option i think
 const OV = new OpenVidu({
   // OpenVidu configuration options
 });
