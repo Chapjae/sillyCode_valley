@@ -11,6 +11,7 @@ const routes = require("./controllers");
 const sequelize = require("./config/connection");
 // const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
+<<<<<<< feature/videoRoutes
 const PORT = process.env.PORT || 3001
 
 // setup handlebars below if we decide to stick with it as a templating language 
