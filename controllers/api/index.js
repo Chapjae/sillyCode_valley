@@ -7,5 +7,4 @@ router.use("/users", userRoutes);
 router.use("/videos", videoRoutes);
 router.use("/commentRoutes", commentRoutes);
 
-
 module.exports = router
