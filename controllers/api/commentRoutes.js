@@ -1,9 +1,44 @@
 const router = require("express").Router();
 // required the models here
-const { Comment, User } = require('../../models');
+const { Comment, User, Video } = require('../../models');
 
 // Sample array to simulate a database of comments
 let comments = [];
+
+// creating a function that can set up the route for fetching the comments related to the specific video. 
+function setupVideoCommentsRoute(app) {
+  app.get('/video/:videoId', async (req, res) => {
+      const videoId = req.params.videoId;
+
+      try {
+          // Fetch the video details from the database
+          const videoData = await Video.findByPk(videoId);
+
+          if (!videoData) {
+              return res.status(404).json({ error: "Video not found." });
+          }
+
+          // Fetch the associated comments for the video
+          const commentData = await Comment.findAll({
+              where: {
+                  videoId: videoId
+              },
+              include: [
+                  {
+                      model: User,
+                      attributes: ['name'],
+                  },
+              ],
+          });
+
+          // Render the Handlebars template with the fetched video and comment data
+          res.render('videopage', { video: videoData, comments: commentData });
+      } catch (error) {
+          console.error("Error fetching data:", error);
+          res.status(500).json({ error: "Error fetching data." });
+      }
+  });
+}
 
 // Route to get all comments
 router.get("/", async (req, res) => {
@@ -121,5 +156,12 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ error: "Error deleting comment." });
   }
 });
+
+// Export the comments array
+module.exports = comments;
+
+module.exports = {
+  setupVideoCommentsRoute
+};
 
 module.exports = router

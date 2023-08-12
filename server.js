@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const commentRoutes = require('./path/to/commentRoutes');
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const {engine} = require("express-handlebars");
@@ -11,7 +12,6 @@ const routes = require("./controllers");
 const sequelize = require("./config/connection");
 // const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-<<<<<<< feature/videoRoutes
 const PORT = process.env.PORT || 3001
 
 // setup handlebars below if we decide to stick with it as a templating language 
