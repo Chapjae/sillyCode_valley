@@ -35,30 +35,30 @@ const hbs = exphbs.create({ helpers });
 // io.on('connection', connection);
 // app.use(session(sess));
 
-app.get("/room", (req, res) => {
-  res.redirect(`/4`)
-})
+// app.get("/room", (req, res) => {
+//   res.redirect(`/4`)
+// })
 
-app.get("/:room", (req, res) => {
-  res.render("room", {roomId: req.params.room})
+app.get("/room", (req, res) => {
+  res.render("room")
 });
 
 
-io.on('connection', socket => {
-  socket.on('join-room', (roomId, userId) => {
-  //  setup socket to join a room
-    console.log("someone joined")
-    socket.join(roomId)
-    // send a message to everyone in the room, except self
-    socket.to(roomId).broadcast.emit("user-connected", userId)
-  })
-})
+// io.on('connection', socket => {
+//   socket.on('join-room', (roomId, userId) => {
+//   //  setup socket to join a room
+//     console.log("someone joined")
+//     socket.join(roomId)
+//     // send a message to everyone in the room, except self
+//     socket.to(roomId).broadcast.emit("user-connected", userId)
+//   })
+// })
 
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
+app.engine("hbs", hbs.engine);
+app.set("view engine", "hbs");
 app.set("views", "./views");
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
