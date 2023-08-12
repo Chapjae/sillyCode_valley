@@ -15,7 +15,7 @@ VideoTag.init(
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: User,
+            model: 'user',
             id: 'id',
         },
     },
@@ -23,7 +23,7 @@ VideoTag.init(
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: Video,
+            model: 'video',
             id: 'id',
         },
     },

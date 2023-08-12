@@ -9,3 +9,11 @@ video {
     height: 100%;
     object-fit: cover;
 }
+
+.scroll {
+    max-height: 600px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+  }

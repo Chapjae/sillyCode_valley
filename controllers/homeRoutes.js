@@ -27,4 +27,3 @@ io.on("connection", socket => {
 
 
 module.exports = router
-httpServer.listen(3000);
