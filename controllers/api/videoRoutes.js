@@ -67,15 +67,28 @@ router.post("/upload-video", async (req, res) => {
   }
 });
 
-router.post('/homepage', withAuth, async (req, res) => {
-  try {
-    const videos = await Video.create({
-      
-    })
-  } catch(err) {
-    console.error("no video found");
-    res.status(500).json(err);
-  }
-})
+// router.post('/homepage', async (req, res) => {
+//   console.log(req)
+//   try {
+//     const videos = await Video.findAll({
+//       created_on: resources[i].created_at,
+//       link: resources[i].url,
+//     })
+//   } catch(err) {
+//     console.error("no video found");
+//     res.status(500).json(err);
+//   }
+// })
+// router.get('/homepage', async (req, res) => {
+//   // console.log(req)
+//   try {
+//     const videos = await Video.findAll()
+//     res.status(200).json(videos);
+//   } catch(err) {
+//     console.error("no video found");
+//     res.status(500).json(err);
+//   }
+// })
+
 
 module.exports = router;
