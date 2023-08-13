@@ -7,6 +7,7 @@ const session = require("express-session");
 const routes = require("./controllers");
 const { v4: uuidv4 } = require("uuid");
 const helpers = require("./utils/helpers");
+const cloudinary = require('cloudinary')
 
 // const sequelize = require("./config/connection");
 // const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -35,36 +36,25 @@ app.use(routes);
 //   })
 // };
 
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + '/index.html');
-// });
-
-// io.on('connection', connection);
 // app.use(session(sess));
 
-app.get("/room", (req, res) => {
-  console.log({ req, res })
-  res.render("room")
+const options = {
+  resource_type: "video",
+};
+
+cloudinary.v2.api.resources(options).then((result) => {
+  // Extract URLs from the result for videos
+  const videoUrls = result.resources
+    .filter((resource) => resource.resource_type === "video") // Filter only video resources
+    .map((resource) => resource.url);
+
+  console.log(videoUrls);
 });
-
-
-// sequelize.sync({ force: false }).then(() => {
-//   app.listen(PORT, () => console.log('Now listening'));
-// });
-
-// socket.on("offer", payload => {
-//   io.to(payload.target).emit( "offer", payload);
-// });
-
-// socket.on("answer", payload => {
-//   io.to(payload.target).emit("answer", payload);
-// });
-
-// socket.on("ice-candadite", incoming => {
-//   io.to(incoming.target).emit("ice-candidate", incoming-candidate);
-// });
-
 
 server.listen(8000, () => {
   console.log('listening on: 8000');
 });
+
+// sequelize.sync({ force: false }).then(() => {
+//   app.listen(PORT, () => console.log('Now listening'));
+// });
