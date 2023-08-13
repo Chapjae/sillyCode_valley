@@ -161,7 +161,6 @@ router.delete("/:id", async (req, res) => {
 module.exports = comments;
 
 module.exports = {
+  router,
   setupVideoCommentsRoute
 };
-
-module.exports = router

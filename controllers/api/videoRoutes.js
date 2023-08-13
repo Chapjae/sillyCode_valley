@@ -5,16 +5,20 @@ const { OpenVidu } = require("openvidu-node-client"); // using OpenVidu for WebR
 
 // Initialize Cloudinary
 // Replace with our cloud name when we get it HERE
-cloudinary.config({
-  cloud_name: "your_cloud_name",
-  api_key: "your_api_key",
-  api_secret: "your_api_secret",
+import {v2 as cloudinary} from 'cloudinary';
+          
+cloudinary.config({ 
+  cloud_name: 'dxxawmgby', 
+  api_key: '8121529335433962', 
+  api_secret: 'lqiZcFL71Hok_cgDQb7g17SddNU' 
 });
 
 // Initialize OpenVidu, replace this with out open video config??
 // WEB RTC uses this config option i think
 const OV = new OpenVidu({
-  // OpenVidu configuration options
+  hostname: 'your_openvidu_url', // Replace with your OpenVidu server URL
+  port: 3001, // Replace with the appropriate port number
+  basicAuth: 'YOUR_BASIC_AUTH_CREDENTIALS' 
 });
 
 // Store active sessions

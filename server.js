@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const commentRoutes = require('./path/to/commentRoutes'); // added commentRoutes
+const commentRoutes = require('./controllers/api/commentRoutes');// added commentRoutes
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const {engine} = require("express-handlebars");
@@ -10,7 +10,7 @@ const routes = require("./controllers");
 const helpers = require("./utils/helpers");
 
 const sequelize = require("./config/connection");
-// const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const PORT = process.env.PORT || 3001
 
