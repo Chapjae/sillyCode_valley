@@ -17,6 +17,7 @@ router.get("/:room", (req, res) => {
 
 
 
+<<<<<<< HEAD
 // io.on("connection", socket => {
 //   socket.on('join-room', (roomId, userId) => {
 //     socket.join(roomId)
@@ -51,4 +52,6 @@ router.get("/:room", (req, res) => {
 // server.listen(3001, () => {
 //   console.log("testing")
 // })
+=======
+>>>>>>> 6b04a76532629c95749180a32a6186155687cb62
 module.exports = router
