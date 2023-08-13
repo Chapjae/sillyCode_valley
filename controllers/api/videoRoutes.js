@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const cloudinary = require("cloudinary").v2; // Setting up Cloudinery
 const { v4: uuidv4 } = require("uuid");
+const { Video } = require('../../models');
 // const { OpenVidu } = require("openvidu-node-client"); // using OpenVidu for WebRTC
 
 // Initialize Cloudinary
@@ -72,5 +73,16 @@ router.post("/upload-video", async (req, res) => {
     res.status(500).json({ error: "Failed to upload video" });
   }
 });
+
+router.post('/homepage', withAuth, async (req, res) => {
+  try {
+    const videos = await Video.create({
+      
+    })
+  } catch(err) {
+    console.error("no video found");
+    res.status(500).json(err);
+  }
+})
 
 module.exports = router;
