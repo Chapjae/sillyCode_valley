@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="/script.js"></script>
+ 
 </head> --}}
 
 <div class="d-flex flex-column">
@@ -12,11 +12,16 @@
     <p class="text-center">test message</p>
   </div>
   <div id="video-grid" class="container-fluid d-flex justify-content-center">
-    <video id="localVideo" autoplay playsinline controls="false"></video>
+    <video id="localVideo" autoplay playsinline controls></video>
+    <video id="recording" width="160" height="120" controls></video>
+      <button id="startButton" class="button">Start Recording</button>
+      <button id="stopButton" class="button">Stop Recording</button>
+      <a id="downloadButton" class="button">Download</a>
     {{!-- video feeds will render here, the video tags will each need a class='w-50 p-3' --}}
   </div>
 
  <div class="d-flex justify-content-center"> <button type="button" class="btn-dark">Generate Prompt</button></div>
 
-{{!-- add script tag for video js here --}}
+{{!-- add script tag for video js here --}} 
+<script src="/script.js"></script>
 </html>

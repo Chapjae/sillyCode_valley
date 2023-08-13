@@ -17,41 +17,4 @@ router.get("/:room", (req, res) => {
 
 
 
-<<<<<<< HEAD
-// io.on("connection", socket => {
-//   socket.on('join-room', (roomId, userId) => {
-//     socket.join(roomId)
-//     socket.to(roomId).broadcast.emit('user-connected', userId)
-
-//     socket.on('disconnect', () => {
-//       socket.to(roomId).broadcast.emit('user-disconnected', userId)
-//     })
-//   })
-// });
-
-
-// const {v4 : uuidv4} = require("uuid");
-
-// router.get("/", (req, res) => {
-//   res.redirect(`/${uuidv4()}`)
-// })
-
-// router.get("/:room", (req, res) => {
-//   res.render("room", {roomId: req.params.room})
-// });
-
-// function connection (server) {
-//   io.on("connection", socket => {
-//   socket.on("join-room", (roomId, userId) => {
-//     console.log(roomId, userId)
-//   })
-// });
-// }
-
-
-// server.listen(3001, () => {
-//   console.log("testing")
-// })
-=======
->>>>>>> 6b04a76532629c95749180a32a6186155687cb62
 module.exports = router
