@@ -4,13 +4,6 @@ const { v4: uuidv4 } = require("uuid");
 const { Video } = require('../../models');
 // const { OpenVidu } = require("openvidu-node-client"); // using OpenVidu for WebRTC
 
-// Initialize Cloudinary
-// Replace with our cloud name when we get it HERE
-cloudinary.config({
-  cloud_name: "your_cloud_name",
-  api_key: "your_api_key",
-  api_secret: "your_api_secret",
-});
 
 // Initialize OpenVidu, replace this with out open video config??
 // WEB RTC uses this config option i think
