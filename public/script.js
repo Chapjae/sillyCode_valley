@@ -87,6 +87,7 @@ stopButton.addEventListener(
   false,
 );
 
+
 // const canvas = document.querySelector("canvas");
 
 // // Optional frames per second argument.
