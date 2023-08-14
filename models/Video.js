@@ -13,14 +13,18 @@ Video.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    created_on: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
     link: {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+          model: 'user',
+          id: 'id',
+      },
+  },
   },
   {
     sequelize,

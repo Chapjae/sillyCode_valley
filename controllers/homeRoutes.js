@@ -69,7 +69,7 @@ const storeVideoData = async () => {
         if (!existingVideo) {
           await Video.create({
             link: resource.url,
-            created_on: resource.created_at,
+            user_id: ,
           });
         }
       }
