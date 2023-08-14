@@ -8,7 +8,7 @@ const session = require("express-session");
 const routes = require("./controllers");
 const { v4: uuidv4 } = require("uuid");
 const helpers = require("./utils/helpers");
-const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary').v2
 const axios = require('axios');
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -37,6 +37,20 @@ const sess = {
   })
 };
 
+// const options = {
+//         resource_type: 'video',
+//         metadata
+//       };
+
+cloudinary.api
+.metadata_field_by_field_id("user_id")
+.then(result=>console.log(result));
+
+
+
+
+
+
 app.use(session(sess));
 
   server.listen(8000, () => {
@@ -46,3 +60,4 @@ app.use(session(sess));
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
+
