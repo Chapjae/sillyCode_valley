@@ -1,32 +1,14 @@
 const router = require("express").Router();
+const withAuth = require('../../utils/auth');
+
 // required the models here
 const { Comment, User } = require('../../models');
 
 // Sample array to simulate a database of comments
 let comments = [];
 
-// Route to get all comments
-router.get("/", async (req, res) => {
-  try {
-    const commentData = await Comment.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
-    // Sending the fetched comment data instead of "comments"
-    res.status(200).json(commentData); 
-  } catch (error) {
-    console.error("Error fetching comments:", error);
-    res.status(500).json({ error: "Error fetching comments." });
-  }
-});
-
-
 // Route to create a new comment
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const { text, userId } = req.body;
 
@@ -54,31 +36,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-
-// Route to get a specific comment by ID
-router.get("/:id", async (req, res) => {
-  try {
-    const comment = await Comment.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
-
-    if (comment) {
-      res.status(200).json(comment);
-    } else {
-      res.status(404).json({ error: "Comment not found." });
-    }
-  } catch (error) {
-    console.error("Error fetching comment:", error);
-    res.status(500).json({ error: "Error fetching comment." });
-  }
-});
-
-
 // Route to update a specific comment by ID
 // router.put("/:id", async (req, res) => {
 //   try {
@@ -103,7 +60,7 @@ router.get("/:id", async (req, res) => {
 
 
 // Route to delete a specific comment by ID
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const comment = await Comment.destroy({
       where: {

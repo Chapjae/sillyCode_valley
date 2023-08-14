@@ -7,18 +7,32 @@ const session = require("express-session");
 const routes = require("./controllers");
 const { v4: uuidv4 } = require("uuid");
 const helpers = require("./utils/helpers");
-const cloudinary = require('cloudinary')
-
-// const sequelize = require("./config/connection");
-// const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const cloudinary = require('cloudinary').v2
+const axios = require('axios');
+const sequelize = require("./config/connection");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const { Video } = require('./models');
 const app = express();
 
-// const PORT = process.env.PORT || 3000
-const server = http.createServer(app);
-const io = socket(server)
+const PORT = process.env.PORT || 3000
+// const server = http.createServer(app);
+// const io = socket(server)
 const hbs = exphbs.create({ helpers });
-app.engine("hbs", hbs.engine);
-app.set("view engine", "hbs");
+
+const sess = {
+  secret: process.env.SECRET_KEY,
+  cookie:{},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
+
+app.use(session(sess));
+
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 app.set("views", "./views");
 
 app.use(express.json())
@@ -26,35 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-// const sess = {
-//   secret: process.env.SECRET_KEY,
-//   cooke:{},
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new SequelizeStore({
-//     db: sequelize
-//   })
-// };
-
-// app.use(session(sess));
-
-const options = {
-  resource_type: "video",
-};
-
-cloudinary.v2.api.resources(options).then((result) => {
-  // Extract URLs from the result for videos
-  const videoUrls = result.resources
-    .filter((resource) => resource.resource_type === "video") // Filter only video resources
-    .map((resource) => resource.url);
-
-  console.log(videoUrls);
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
 });
 
-server.listen(8000, () => {
-  console.log('listening on: 8000');
-});
-
-// sequelize.sync({ force: false }).then(() => {
-//   app.listen(PORT, () => console.log('Now listening'));
-// });

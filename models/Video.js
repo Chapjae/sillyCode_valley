@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+
 const sequelize = require("../config/connection");
 
 class Video extends Model {}
@@ -11,14 +12,6 @@ Video.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-    },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    created_on: {
-      type: DataTypes.DATE,
-      allowNull: false,
     },
     link: {
         type: DataTypes.STRING,
