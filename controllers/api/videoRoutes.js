@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const cloudinary = require("cloudinary").v2; // Setting up Cloudinery
 const { v4: uuidv4 } = require("uuid");
-const { Video } = require('../../models');
+const { Video, User, Comment } = require('../../models');
+const { findAll } = require("../../models/User");
 // const { OpenVidu } = require("openvidu-node-client"); // using OpenVidu for WebRTC
-
 
 // Initialize OpenVidu, replace this with out open video config??
 // WEB RTC uses this config option i think
@@ -13,7 +13,6 @@ const { Video } = require('../../models');
 //   port: 3001, // Replace with the appropriate port number
 //   basicAuth: 'YOUR_BASIC_AUTH_CREDENTIALS' 
 // });
-
 
 // Store active sessions
 const activeSessions = {};

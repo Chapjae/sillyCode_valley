@@ -19,8 +19,8 @@ const PORT = process.env.PORT || 3000
 const server = http.createServer(app);
 const io = socket(server)
 const hbs = exphbs.create({ helpers });
-app.engine("hbs", hbs.engine);
-app.set("view engine", "hbs");
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 app.set("views", "./views");
 
 app.use(express.json())
@@ -30,7 +30,7 @@ app.use(routes);
 
 const sess = {
   secret: process.env.SECRET_KEY,
-  cooke:{},
+  cookie:{},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
