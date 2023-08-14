@@ -3,10 +3,10 @@ const Video = require('./Video');
 const Comment = require('./Comment');
 // const VideoTag = require('./VideoTag');
 // this automatically sets up the foreign key to 'user_id' in the video model
-User.hasMany(Video); 
+// User.hasMany(Video); 
 
 // this automatically sets up the created 'user_id' foreign key in the video model
-Video.belongsTo(User);
+// Video.belongsTo(User);
 
 Video.hasMany(Comment, {
     foreignKey: 'video_id', onDelete: 'CASCADE'

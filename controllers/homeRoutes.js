@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const cloudinary = require("cloudinary").v2;
 const { Video, User } = require('../models');
+const withAuth = require('../utils/auth');
+
 // let socket = io()
 // const { createServer } = require("http");
 // const server = require("http").createServer();
@@ -26,8 +28,7 @@ const { Video, User } = require('../models');
 //   }
 // });
 
-
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
   const videoData = await Video.findAll({
     include: [
@@ -50,36 +51,40 @@ router.get("/", async (req, res) => {
   }
   });
 
-router.get("/room", (req, res) => {
+router.get("/room", withAuth, (req, res) => {
+  console.log({ req, res })
   res.render("room")
 });
 
-// const storeVideoData = async () => {
-//   try {
-//     const options = {
-//       resource_type: 'video'
-//     };
-//     const result = await cloudinary.api.resources(options);
-//     for (const resource of result.resources) {
-//       if (resource.resource_type === 'video') {
-//         const existingVideo = await Video.findOne({
-//           where: { link: resource.url }
-//         });
-//         if (!existingVideo) {
-//           await Video.create({  
-//             link: resource.url
-//           });
-//         }
-//       }
-//     }
-//     console.log('Video data stored successfully.');
-//   } catch (error) {
-//     console.error('Error storing video data:', error);
-//   }
-// };
-// storeVideoData();
 
-router.get("/:id", async (req, res) => {
+
+const storeVideoData = async () => {
+  try {
+    const options = {
+      resource_type: 'video'
+    };
+    const result = await cloudinary.api.resources(options);
+    for (const resource of result.resources) {
+      if (resource.resource_type === 'video') {
+        const existingVideo = await Video.findOne({
+          where: { link: resource.url }
+        });
+        if (!existingVideo) {
+          await Video.create({
+            link: resource.url,
+            user_id: user_id,
+          });
+        }
+      }
+    }
+    console.log('Video data stored successfully.');
+  } catch (error) {
+    console.error('Error storing video data:', error);
+  }
+};
+storeVideoData();
+
+router.get("/:id", withAuth, async (req, res) => {
   const videoId = req.params.id;
   try {
     const video = await Video.findByPk(videoId);
@@ -109,6 +114,15 @@ router.get("/:id", async (req, res) => {
     console.error("Error fetching comments:", error);
     res.status(500).json({ error: "Error fetching comments." });
   }
+});
+
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/homepage');
+    return;
+  }
+  res.render('login');
 });
 
 module.exports = router

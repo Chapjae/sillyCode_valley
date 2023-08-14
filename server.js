@@ -1,5 +1,4 @@
 const express = require("express");
-const app = express();
 const http = require("http");
 const socket = require("socket.io");
 const exphbs = require("express-handlebars");
@@ -12,20 +11,13 @@ const cloudinary = require('cloudinary').v2
 const axios = require('axios');
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
-const { Video } = require('./models')
+const { Video } = require('./models');
+const app = express();
 
 const PORT = process.env.PORT || 3000
-const server = http.createServer(app);
-const io = socket(server)
+// const server = http.createServer(app);
+// const io = socket(server)
 const hbs = exphbs.create({ helpers });
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
-app.set("views", "./views");
-
-app.use(express.json())
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(routes);
 
 const sess = {
   secret: process.env.SECRET_KEY,
@@ -53,9 +45,14 @@ cloudinary.api
 
 app.use(session(sess));
 
-  server.listen(8000, () => {
-  console.log('listening on: 8000');
-});
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
+app.set("views", "./views");
+
+app.use(express.json())
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));

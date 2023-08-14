@@ -1,5 +1,5 @@
 module.exports = {
-  to_string: (data) => {
-    return data.toString();
+  format_date: (date) => {
+    return date.toLocalDateString();
   }
 }
