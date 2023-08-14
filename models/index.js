@@ -3,13 +3,17 @@ const Video = require('./Video');
 const Comment = require('./Comment');
 // const VideoTag = require('./VideoTag');
 
-// User.hasMany(Comment, {
-//     foreignKey: 'comment_id',
-//     onDelete: "CASCADE",
-// });
+User.hasMany(Video)
+
+User.hasMany(Comment, {
+    foreignKey: 'user_id',
+    onDelete: "CASCADE",
+});
+
+Video.belongsTo(User);
 
 Video.hasMany(Comment, {
-    foreignKey: 'comment_id',
+    foreignKey: 'video_id',
     onDelete: 'CASCADE'
 });
 
@@ -17,13 +21,10 @@ Comment.belongsTo(Video, {
     foreignKey: 'video_id',
 });
 
-// Comment.belongsTo(User, {
-//     foreignKey: 'user_id',
-// });
+Comment.belongsTo(User, {
+    foreignKey: 'user_id',
+});
 
-User.hasMany(Video, {
-    foreignKey: 'video_id'
-})
 
 // Video.belongsToMany(User, { through: VideoTag, foreignKey: 'user_id' });
 // User.belongsToMany(Video, { through: VideoTag, foreignKey: 'video_id' });
