@@ -12,10 +12,6 @@ Video.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     created_on: {
       type: DataTypes.DATE,
       allowNull: false,
