@@ -26,9 +26,6 @@ const { Video, User } = require('../models');
 //   }
 // });
 
-router.get('/:id', async (req, res) => {
-
-});
 
 router.get("/", async (req, res) => {
   try {
@@ -83,5 +80,9 @@ const storeVideoData = async () => {
   }
 };
 storeVideoData();
+
+router.get('/:id', async (req, res) => {
+  res.render
+});
 
 module.exports = router

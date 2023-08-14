@@ -2,12 +2,13 @@
   <h2 class="text-center">IMPROVE YOUR IMPROV</h2>
   <div class="scroll">
     {{!-- link view comments to video --}}
+    {{!-- for each video we are targeting the link and id properties to display --}}
     {{#each videos}}
     <div>
     <video controls width="250">
       <source src={{ link }} type="video/webm" />
     </video>
-    <a href="">View Comments</a>
+    <a href="/{{ id }}">View Comments</a>
     </div>
     {{/each}}
   </div>
