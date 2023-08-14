@@ -2,22 +2,14 @@
   <h2 class="text-center">IMPROVE YOUR IMPROV</h2>
   <div class="scroll">
     {{!-- link view comments to video --}}
+    {{#each videos}}
     <div>
     <video controls width="250">
-      <source src="http://res.cloudinary.com/dxxawmgby/video/upload/v1691898523/RecordedVideo_2_ti7tgm.mkv"
-        type="video/webm" />
+      <source src={{ link }} type="video/webm" />
     </video>
     <a href="">View Comments</a>
     </div>
-
-        <video controls width="250">
-      <source src="http://res.cloudinary.com/dxxawmgby/video/upload/v1691898523/RecordedVideo_2_ti7tgm.mkv"
-        type="video/webm" />
-    </video>
-        <video controls width="250">
-      <source src="http://res.cloudinary.com/dxxawmgby/video/upload/v1691898523/RecordedVideo_2_ti7tgm.mkv"
-        type="video/webm" />
-    </video>
+    {{/each}}
   </div>
   <div class="d-flex justify-content-center">
     <button type="button" class="btn-dark">Create A Video</button>

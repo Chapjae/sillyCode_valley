@@ -17,6 +17,19 @@ const { Video, User } = require('../models');
 //   res.render("room", {roomid: req.params.room})
 // });
 
+// router.get('/', async (req, res) => {
+//   try {
+//   const allVideos = await Video.findAll()
+//   res.json(allVideos);
+//   } catch(err){
+//     res.status(500).json(err)
+//   }
+// });
+
+router.get('/:id', async (req, res) => {
+
+});
+
 router.get("/", async (req, res) => {
   try {
   const videoData = await Video.findAll({
@@ -34,7 +47,7 @@ router.get("/", async (req, res) => {
   });
   console.log(videos);
 
-  res.render("homepage")
+  res.render("homepage", {videos})
   }catch(err) {
     res.status(500).json(err)
   }
