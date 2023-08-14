@@ -4,7 +4,6 @@ const sequelize = require("../config/connection");
 
 class Video extends Model {}
 
-
 Video.init(
   {
     id: {
@@ -14,8 +13,16 @@ Video.init(
       autoIncrement: true,
     },
     link: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "user",
+        id: "id",
+      },
     },
   },
   {

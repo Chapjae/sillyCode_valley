@@ -6,6 +6,28 @@ let downloadButton = document.getElementById("downloadButton");
 let logElement = document.getElementById("log");
 
 let recordingTimeMS = 10000;
+var myWidget = cloudinary.createUploadWidget({
+  cloudName: 'dxxawmgby', 
+  uploadPreset: 'ml_default'}, async (error, result) => { 
+    if (!error && result && result.event === "success") { 
+      console.log('Done! Here is the image info: ', result.info);
+      const url = result.info.url 
+      const uploadedVideo = await fetch('/api/videos', {
+        method: 'POST',
+        body: JSON.stringify({ link: url }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      console.log(uploadedVideo)
+    }
+  }
+)
+
+document.getElementById("upload_widget").addEventListener("click", function(){
+  console.log("widget")
+    myWidget.open();
+  }, false);
 
 function log(msg) {
   logElement.innerHTML += `${msg}\n`;
