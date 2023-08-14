@@ -1,0 +1,38 @@
+[
+    {
+    "comment_body": "This is a great video.",
+    "user_id": 1,
+    "video_id": 1,
+    "created_on": "Aug 13 2023"
+    },
+    {
+    "comment_body": "Awesome content, keep up the great work!",
+    "user_id": 1,
+    "video_id": 1,
+    "created_on": "Aug 13 2023"
+    },
+    {
+    "comment_body": "My grandma can act better than you!",
+    "user_id": 1,
+    "video_id": 1,
+    "created_on": "Aug 13 2023"
+    },
+    {
+    "comment_body": "It was alright, say it with your chest!!",
+    "user_id": 1,
+    "video_id": 1,
+    "created_on": "Aug 13 2023"
+},
+{
+    "comment_body": "This is going to help me with my upcoming role! Thank you!",
+    "user_id": 1,
+    "video_id": 1,
+    "created_on": "Aug 13 2023"
+},
+{
+    "comment_body": "You still have time to delete this! ",
+    "user_id": 1,
+    "video_id": 1,
+    "created_on": "Aug 13 2023"
+}
+]

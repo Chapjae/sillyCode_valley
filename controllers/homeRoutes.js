@@ -81,8 +81,36 @@ const storeVideoData = async () => {
 };
 storeVideoData();
 
-router.get('/:id', async (req, res) => {
-  res.render
+router.get("/:id", async (req, res) => {
+  const videoId = req.params.id;
+  try {
+    const video = await Video.findByPk(videoId);
+    if (!video) {
+      return res.status(404).json(`wrong page 404`);
+    } 
+    const link = video.dataValues.link
+    
+    const commentData = await Comment.findAll({
+      where: {
+        video_id: videoId, 
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    // serialized the comments
+    const comments = commentData.map((comment) => comment.get({ plain: true}));
+
+    // Sending the fetched comment data instead of "comments"
+    res.render("comments", {comments, link}); 
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+    res.status(500).json({ error: "Error fetching comments." });
+  }
 });
 
 module.exports = router
