@@ -31,11 +31,11 @@ const withAuth = require('../utils/auth');
 router.get("/", withAuth, async (req, res) => {
   try {
   const videoData = await Video.findAll({
-    include: [
-      {
-      model: User,
-    },
-    ],
+    // include: [
+    //   {
+    //   model: User,
+    // },
+    // ],
   });
 
   const videos = videoData.map((video) => {
@@ -71,8 +71,7 @@ const storeVideoData = async () => {
         });
         if (!existingVideo) {
           await Video.create({
-            link: resource.url,
-            user_id: user_id,
+            link: resource.url
           });
         }
       }
@@ -84,7 +83,7 @@ const storeVideoData = async () => {
 };
 storeVideoData();
 
-router.get("/:id", withAuth, async (req, res) => {
+router.get("/video/:id", withAuth, async (req, res) => {
   const videoId = req.params.id;
   try {
     const video = await Video.findByPk(videoId);
@@ -119,10 +118,10 @@ router.get("/:id", withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/homepage');
+    res.redirect('/');
     return;
   }
-  res.render('login');
+  res.render('login', {});
 });
 
 module.exports = router

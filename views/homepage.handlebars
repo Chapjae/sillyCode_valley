@@ -3,6 +3,7 @@
   <div class="scroll">
     {{!-- link view comments to video --}}
     {{!-- for each video we are targeting the link and id properties to display --}}
+    {{#if videos}}
     {{#each videos}}
     <div>
     <video controls width="250">
@@ -11,9 +12,10 @@
     <a href="/{{ id }}">View Comments</a>
     </div>
     {{/each}}
+    {{/if}}
   </div>
   <div class="d-flex justify-content-center">
     <button type="button" class="btn-dark">Create A Video</button>
   </div>
 </div>
-<script src="/homepage.js"></script>
+{{!-- <script src="/homepage.js"></script> --}}

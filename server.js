@@ -29,20 +29,6 @@ const sess = {
   })
 };
 
-// const options = {
-//         resource_type: 'video',
-//         metadata
-//       };
-
-cloudinary.api
-.metadata_field_by_field_id("user_id")
-.then(result=>console.log(result));
-
-
-
-
-
-
 app.use(session(sess));
 
 app.engine("handlebars", hbs.engine);
