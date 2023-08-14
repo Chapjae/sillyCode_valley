@@ -28,7 +28,8 @@ const withAuth = require('../utils/auth');
 //   }
 // });
 
-router.get("/", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
+  // router.get("/", withAuth, async (req, res) => {
   try {
   const videoData = await Video.findAll({
     // include: [
@@ -51,11 +52,11 @@ router.get("/", withAuth, async (req, res) => {
   }
   });
 
-router.get("/room", withAuth, (req, res) => {
+router.get("/room", (req, res) => {
+  // router.get("/room", withAuth, (req, res) => {
   console.log({ req, res })
   res.render("room")
 });
-
 
 
 const storeVideoData = async () => {
