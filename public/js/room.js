@@ -21,7 +21,7 @@ document.getElementById("prompt").addEventListener("click", function(){
 })
 
 
-var myWidget = cloudinary.createUploadWidget({
+let myWidget = cloudinary.createUploadWidget({
   cloudName: 'dxxawmgby', 
   uploadPreset: 'ml_default'}, async (error, result) => { 
     if (!error && result && result.event === "success") { 
