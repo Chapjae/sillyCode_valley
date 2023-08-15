@@ -1,9 +1,10 @@
 const router = require("express").Router();
-const cloudinary = require("cloudinary").v2; // Setting up Cloudinery
-const { v4: uuidv4 } = require("uuid");
+// const cloudinary = require("cloudinary").v2; // Setting up Cloudinery
+// const { v4: uuidv4 } = require("uuid");
 const { Video, User, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
+// http://localhost:3000/api/videos
 router.get("/", async (req, res) => {
   try {
     const videoData = await Video.findAll({
@@ -20,11 +21,12 @@ router.get("/", async (req, res) => {
   }
 });
 
+// http://localhost:3000/api/videos
 router.post("/", async (req, res) => {
   try {
     const videoData = await Video.create({
       link: req.body.url,
-      user_id: req.session.user_id
+      user_id: req.session.user_id,
     });
     res.status(200).json(videoData);
   } catch (err) {

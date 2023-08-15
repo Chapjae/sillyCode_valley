@@ -4,10 +4,10 @@ const videoRoutes = require("./videoRoutes");
 const commentRoutes = require("./commentRoutes");
 
 router.use("/users", userRoutes);
-// http://localhost:3000/api/user
+// http://localhost:3000/api/users
 router.use("/videos", videoRoutes);
-//http://localhost:3000/api/videos
+// http://localhost:3000/api/videos
 router.use("/commentRoutes", commentRoutes);
-//http://localhost:3000/api/comments
+// http://localhost:3000/api/commentRoutes
 
 module.exports = router
