@@ -32,6 +32,8 @@
           <!-- Conditionally render login or logout links -->
           {{#if logged_in}}
             <button class="button" id="logout">logout</button>
+            {{else}}
+            <button class="button" id="login">login</button>
           {{/if}}
         </nav>
       </header>
