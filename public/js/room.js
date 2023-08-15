@@ -51,6 +51,10 @@ function wait(delayInMS) {
   return new Promise((resolve) => setTimeout(resolve, delayInMS));
 }
 
+function stopMicrophone(stream) {
+  stream.getAudioTracks().forEach((track) => track.stop());
+}
+
 function startRecording(stream, lengthInMS) {
   let recorder = new MediaRecorder(stream);
   let data = [];
@@ -65,7 +69,8 @@ function startRecording(stream, lengthInMS) {
   });
 
   let recorded = wait(lengthInMS).then(() => {
-    if (recorder.state === "recording") {
+    if (recorder.state === "recording") { 
+      stream.getTracks().forEach((track) => track.stop());
       recorder.stop();
     }
   });
@@ -73,9 +78,9 @@ function startRecording(stream, lengthInMS) {
   return Promise.all([stopped, recorded]).then(() => data);
 }
 
-function stop(stream) {
-  stream.getTracks().forEach((track) => track.stop());
-}
+// function stop(stream) {
+ 
+// }
 
 startButton.addEventListener(
   "click",
@@ -103,6 +108,8 @@ startButton.addEventListener(
         console.log(
           `Successfully recorded ${recordedBlob.size} bytes of ${recordedBlob.type} media.`,
         );
+      }).then(() => {
+
       })
       .catch((error) => {
         if (error.name === "NotFoundError") {

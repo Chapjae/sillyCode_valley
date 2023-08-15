@@ -56,8 +56,6 @@ router.get("/room", (req, res) => {
   res.render("room");
 });
 
-
-
 // router.get("/video/:id", withAuth, async (req, res) => {
 //   const videoId = req.params.id;
 //   try {
