@@ -20,7 +20,7 @@ Comment.init(
         allowNull: false,
         references: {
             model: 'user',
-            id: 'id',
+            key: 'id',
         },
     },
     video_id: {
@@ -28,7 +28,7 @@ Comment.init(
         allowNull: false,
         references: {
             model: 'video',
-            id: 'id',
+            key: 'id',
         },
     },
   },
