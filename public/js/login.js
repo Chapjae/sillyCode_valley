@@ -1,5 +1,3 @@
-// const username = document.getElementById("username")
-// const password = document.getElementById("password")
 document.getElementById("sign-up-btn").addEventListener("click", async () => {
     const newUsername = document.getElementById("newUsername").value
     const newPassword = document.getElementById("newPassword").value
@@ -31,13 +29,13 @@ const loginFormHandler = async (event) => {
     event.preventDefault();
     console.log('Hi');
     // Collect values from the login form
-    const userName = document.querySelector('#username').value.trim();
+    const username = document.querySelector('#username').value.trim();
     const password = document.querySelector('#password').value.trim();
-    if (userName && password) {
+    if (username && password) {
         // Send a POST request to the API endpoint
         const response = await fetch('/api/users/login', {
             method: 'POST',
-            body: JSON.stringify({ userName, password }),
+            body: JSON.stringify({ username, password }),
             headers: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {
