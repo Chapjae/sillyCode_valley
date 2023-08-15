@@ -28,6 +28,7 @@ var myWidget = cloudinary.createUploadWidget({
     if (!error && result && result.event === "success") { 
       console.log('Done! Here is the image info: ', result.info);
       const url = result.info.url 
+      console.log(url)
       const uploadedVideo = await fetch('/api/videos', {
         method: 'POST',
         body: JSON.stringify({ link: url }),

@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 const { Comment, User } = require('../../models');
 
 // Sample array to simulate a database of comments
-let comments = [];
+// let comments = [];
 
 // Route to create a new comment
 router.post("/", withAuth, async (req, res) => {
@@ -60,23 +60,23 @@ router.post("/", withAuth, async (req, res) => {
 
 
 // Route to delete a specific comment by ID
-router.delete("/:id", withAuth, async (req, res) => {
-  try {
-    const comment = await Comment.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-    });
+// router.delete("/:id", withAuth, async (req, res) => {
+//   try {
+//     const comment = await Comment.destroy({
+//       where: {
+//         id: req.params.id,
+//         user_id: req.session.user_id,
+//       },
+//     });
     
-    if (!comment) {
-      res.status(404).json({ error: "Comment not found." });
-      return;
-    } 
-  } catch (error) {
-    console.error("Error deleting comment:", error);
-    res.status(500).json({ error: "Error deleting comment." });
-  }
-});
+//     if (!comment) {
+//       res.status(404).json({ error: "Comment not found." });
+//       return;
+//     } 
+//   } catch (error) {
+//     console.error("Error deleting comment:", error);
+//     res.status(500).json({ error: "Error deleting comment." });
+//   }
+// });
 
 module.exports = router
