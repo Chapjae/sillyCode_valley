@@ -19,6 +19,8 @@ video {
 }
 
 /* Andy added this syling below */
+
+
 body {
   background-color: rgba(177, 255, 252, 0.541);
   display: flex;
@@ -27,14 +29,13 @@ body {
   justify-content: center;
 }
 
-
 .center-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 50vh;
-  padding-top: 100px; 
+  padding-top: 320px; 
 }
 
 .login-form,
