@@ -10,7 +10,7 @@ const seedDatabase = async () => {
       individualHooks: true,
       returning: true,
   });
-  const video = await Video.create(videoData, {
+  const video = await Video.bulkCreate(videoData, {
       individualHooks: true,
       returning: true,
   });
