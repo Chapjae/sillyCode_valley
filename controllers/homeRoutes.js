@@ -28,7 +28,7 @@ const storeVideoData = async () => {
 };
 
 router.get("/", async (req, res) => {
-  storeVideoData();
+  await storeVideoData();
   try {
     const videoData = await Video.findAll({
       // include: [
