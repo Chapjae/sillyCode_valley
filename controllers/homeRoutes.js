@@ -50,11 +50,13 @@ router.get("/", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-  });
+});
 
 router.get("/room", withAuth, (req, res) => {
   res.render("room");
 });
+
+
 
 router.get("/video/:id", withAuth, async (req, res) => {
   const videoId = req.params.id;
