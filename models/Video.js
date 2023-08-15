@@ -21,7 +21,7 @@ Video.init(
       allowNull: true,
       references: {
         model: "user",
-        id: "id",
+        key: "id",
       },
     },
   },

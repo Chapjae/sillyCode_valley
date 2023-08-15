@@ -23,14 +23,16 @@ router.get("/", async (req, res) => {
 
 // http://localhost:3000/api/videos
 router.post("/", async (req, res) => {
+  console.log(req.body)
   try {
     const videoData = await Video.create({
-      link: req.body.url,
+      link: req.body.link,
       user_id: req.session.user_id,
     });
     res.status(200).json(videoData);
   } catch (err) {
-    res.status(400).json(err);
+    console.log(err)
+    res.status(500).json(err);
   }
 });
 
