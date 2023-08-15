@@ -25,18 +25,18 @@
     <div class="flex-column justify-space-around">
       <header class="display-flex justify-space-between align-center p-2">
         <h1>
-          <span role="img" aria-label="improv">🍿🎬 🍿 </span>
+          <span class="d-inline-block align-middle text-center" role="img" aria-label="improv">   🍿🎬 🍿 </span>
           <p>IMPROV MASTERS!</p>
         </h1>
         <nav>
           <!-- Conditionally render login or logout links -->
           {{#if logged_in}}
-            |
+        
             <button class="button" id="logout">logout</button>
           {{/if}}
         </nav>
       </header>
-      <main class="container container-fluid mt-5">
+      <main>
         <!-- Render the sub layout -->
         {{{body}}}
       </main>
@@ -44,7 +44,7 @@
 
     <!-- Render script for logged in users only -->
     <footer>
-      we made this, we are very cool and SMRT and awesome!
+
     </footer>
   </body>
     {{#if logged_in}}
