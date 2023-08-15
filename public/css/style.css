@@ -38,6 +38,22 @@ body {
   padding-top: 320px; 
 }
 
+#make-video {
+  background-color: #7b00ff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+#logout {
+  background-color: #7b00ff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
 .login-form,
 .signup-form {
   text-align: left;
