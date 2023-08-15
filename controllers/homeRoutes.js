@@ -51,7 +51,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/room", (req, res) => {
+router.get("/room", withAuth, (req, res) => {
   res.render("room");
 });
 
