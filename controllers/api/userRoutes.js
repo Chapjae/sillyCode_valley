@@ -20,7 +20,9 @@ router.post('/', async (req, res) => {
 // for logging in
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    console.log('login route hit')
+    console.log(req.body)
+    const userData = await User.findOne({ where: { username: req.body.username } });
 
     if (!userData) {
       res
@@ -30,7 +32,7 @@ router.post('/login', async (req, res) => {
     }
 
     const validPassword = await userData.checkPassword(req.body.password);
-
+    console.log(validPassword)
     if (!validPassword) {
       res
         .status(400)
@@ -60,10 +62,12 @@ router.post('/login', async (req, res) => {
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
+    console.log('test')
     req.session.destroy(() => {
       res.status(204).end();
     });
   } else {
+    console.log('else hit')
     res.status(404).end();
   }
 });

@@ -12,22 +12,22 @@ Video.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-Video.hasMany(Comment, {
-    foreignKey: 'video_id', 
-    onDelete: 'CASCADE'
-});
+// Video.hasMany(Comment, {
+//     foreignKey: 'video_id', 
+//     onDelete: 'CASCADE'
+// });
 
-Comment.belongsTo(Video, {
-    foreignKey: 'video_id',
-});
+// Comment.belongsTo(Video, {
+//     foreignKey: 'video_id',
+// });
 
-User.hasMany(Comment, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
-});
+// User.hasMany(Comment, {
+//     foreignKey: 'user_id',
+//     onDelete: 'CASCADE'
+// });
 
-Comment.belongsTo(User, {
-    foreignKey: 'user_id'
-});
+// Comment.belongsTo(User, {
+//     foreignKey: 'user_id'
+// });
 
 module.exports = { User, Video, Comment };
