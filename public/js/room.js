@@ -4,8 +4,22 @@ let startButton = document.getElementById("startButton");
 let stopButton = document.getElementById("stopButton");
 let downloadButton = document.getElementById("downloadButton");
 let logElement = document.getElementById("log");
+let randomPrompt = document.getElementById("improvPrompt")
 
-let recordingTimeMS = 10000;
+document.getElementById("prompt").addEventListener("click", function(){
+ const events = ["Ordering a pizza", "Giving an inspirational speech", "Reviewing a movie", "Hosting a nature show", "Running from a wild animal", 
+                "Anchoring for evening news","Trying to sell a pen","Officiating a funeral", "Looking for a bathroom", "Singing a song", "Floating in space", "Hosting a cooking show", "Officiating a wedding", 
+                "Doing a pre-fight interview", "Programming your second project", "Selling a used car", "Returning clothes that are too small"]
+  const characters = ["Jerome Chenette","Foghorn Leghorn", "Gollum", "Bernie Sanders", "An Auctioneer", "Arnold Schwarzenagger", "Kermit the Frog", "Jim Carey", "Hank Hill", "A knight", "Mike Tyson", "A waiter", "Count Dracula",
+                "Dr. Evil", "Austin Powers", " A radio DJ", "Ruby Rhod", "Sylvester Stallone", "Batman", "A snooty person", "A news anchor", "A priest"]
+
+  let randomEvent = events[Math.floor(Math.random() * events.length)]
+  let randomCharacter = characters[Math.floor(Math.random() * characters.length)]
+
+  randomPrompt.textContent = `You are: ${randomCharacter} and you are: ${randomEvent}`
+})
+
+let recordingTimeMS = 20000;
 var myWidget = cloudinary.createUploadWidget({
   cloudName: 'dxxawmgby', 
   uploadPreset: 'ml_default'}, async (error, result) => { 
@@ -37,6 +51,10 @@ function wait(delayInMS) {
   return new Promise((resolve) => setTimeout(resolve, delayInMS));
 }
 
+function stopMicrophone(stream) {
+  stream.getAudioTracks().forEach((track) => track.stop());
+}
+
 function startRecording(stream, lengthInMS) {
   let recorder = new MediaRecorder(stream);
   let data = [];
@@ -51,7 +69,8 @@ function startRecording(stream, lengthInMS) {
   });
 
   let recorded = wait(lengthInMS).then(() => {
-    if (recorder.state === "recording") {
+    if (recorder.state === "recording") { 
+      stream.getTracks().forEach((track) => track.stop());
       recorder.stop();
     }
   });
@@ -59,9 +78,9 @@ function startRecording(stream, lengthInMS) {
   return Promise.all([stopped, recorded]).then(() => data);
 }
 
-function stop(stream) {
-  stream.getTracks().forEach((track) => track.stop());
-}
+// function stop(stream) {
+ 
+// }
 
 startButton.addEventListener(
   "click",
@@ -89,6 +108,8 @@ startButton.addEventListener(
         console.log(
           `Successfully recorded ${recordedBlob.size} bytes of ${recordedBlob.type} media.`,
         );
+      }).then(() => {
+
       })
       .catch((error) => {
         if (error.name === "NotFoundError") {
