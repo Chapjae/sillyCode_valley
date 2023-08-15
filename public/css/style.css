@@ -19,7 +19,18 @@ video {
 }
 
 /* Andy added this syling below */
+a {
+  color: #fff;
+}
 
+button {
+  background-color: #7b00ff;
+  color: #fff;
+  padding: 10px 15px;
+  border: solid;
+  border-radius: 25px;
+  cursor: pointer;
+}
 
 body {
   background-color: rgba(177, 255, 252, 0.541);
