@@ -28,7 +28,8 @@ const withAuth = require("../utils/auth");
 //   }
 // });
 
-router.get("/", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
+  // router.get("/", withAuth, async (req, res) => {
   try {
     const videoData = await Video.findAll({
       // include: [
@@ -55,30 +56,7 @@ router.get("/room", withAuth, (req, res) => {
   res.render("room");
 });
 
-// const storeVideoData = async () => {
-//   try {
-//     const options = {
-//       resource_type: 'video'
-//     };
-//     const result = await cloudinary.api.resources(options);
-//     for (const resource of result.resources) {
-//       if (resource.resource_type === 'video') {
-//         const existingVideo = await Video.findOne({
-//           where: { link: resource.url }
-//         });
-//         if (!existingVideo) {
-//           await Video.create({
-//             link: resource.url
-//           });
-//         }
-//       }
-//     }
-//     console.log('Video data stored successfully.');
-//   } catch (error) {
-//     console.error('Error storing video data:', error);
-//   }
-// };
-// storeVideoData();
+
 
 router.get("/video/:id", withAuth, async (req, res) => {
   const videoId = req.params.id;
