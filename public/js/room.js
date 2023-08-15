@@ -4,22 +4,20 @@ let startButton = document.getElementById("startButton");
 let stopButton = document.getElementById("stopButton");
 let downloadButton = document.getElementById("downloadButton");
 let logElement = document.getElementById("log");
-let prompt = document.getElementById("prompt");
+let randomPrompt = document.getElementById("improvPrompt")
 
-
-
-function generatePrompt() {
-
-  let events = ["Ordering a pizza", "Giving an inspirational speech", "Reviewing a movie", "Hosting a nature show", "Running from a wild animal", 
-                "Anchoring for evening news", "Looking for a bathroom", "Singing a song", "Floating in space", "Hosting a cooking show", "Officiating a wedding", 
+document.getElementById("prompt").addEventListener("click", function(){
+ const events = ["Ordering a pizza", "Giving an inspirational speech", "Reviewing a movie", "Hosting a nature show", "Running from a wild animal", 
+                "Anchoring for evening news","Officiating a funeral", "Looking for a bathroom", "Singing a song", "Floating in space", "Hosting a cooking show", "Officiating a wedding", 
                 "Doing a pre-fight interview", "Programming your second project", "Selling a used car", "Returning clothes that are too small"]
-  let characters = ["Foghorn Leghorn", "Gollum", "Bernie Sanders", "An Auctioneer", "Arnold Schwarzenagger", "Kermit the Frog", "Jim Carey", "Hank Hill", "A Knight", "Mike Tyson", "A waiter", "Count Dracula",
-                "Dr. Evil", "Austin Powers"]
+  const characters = ["Foghorn Leghorn", "Gollum", "Bernie Sanders", "An Auctioneer", "Arnold Schwarzenagger", "Kermit the Frog", "Jim Carey", "Hank Hill", "A knight", "Mike Tyson", "A waiter", "Count Dracula",
+                "Dr. Evil", "Austin Powers", " A radio DJ", "Ruby Rhod", "Sylvester Stallone", "Batman", "A snooty person", "A news anchor", "A priest"]
 
+  let randomEvent = events[Math.floor(Math.random() * events.length)]
+  let randomCharacter = characters[Math.floor(Math.random() * characters.length)]
 
-}
-
-prompt.addEventListener("click", generatePrompt())
+  randomPrompt.textContent = `You are: ${randomCharacter} and you are: ${randomEvent}`
+})
 
 let recordingTimeMS = 10000;
 var myWidget = cloudinary.createUploadWidget({

@@ -7,10 +7,15 @@
 
 
 <div class="d-flex flex-column">
-    <h2 class="text-center">
+    <h2 id="improvPrompt" class="text-center">
       Prompt:
     </h2>
-    <p class="text-center"></p>
+    <ol class="text-center">Some tips just in case:
+      <li>If you don't know, make it up</li>
+      <li>Give yourself an objective</li>
+      <li>Don't think too much</li>
+      <li>Have fun!</li>
+    </ol>
   </div>
   <div id="video-grid" class="container-fluid d-flex justify-content-center">
     <video id="localVideo" autoplay playsinline controls></video>
@@ -20,11 +25,6 @@
       <a id="downloadButton" class="button">Download</a>
     {{!-- video feeds will render here, the video tags will each need a class='w-50 p-3' --}}
     <button id="upload_widget" class="cloudinary-button">Upload files</button>
-
- 
-
-
-
   </div>
 
  <div class="d-flex justify-content-center"> <button id="prompt" type="button" class="btn-dark">Generate Prompt</button></div>
