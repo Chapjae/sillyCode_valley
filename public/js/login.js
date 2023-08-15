@@ -1,5 +1,5 @@
-const username = document.getElementById("username")
-const password = document.getElementById("password")
+// const username = document.getElementById("username")
+// const password = document.getElementById("password")
 document.getElementById("sign-up-btn").addEventListener("click", async () => {
     const newUsername = document.getElementById("newUsername").value
     const newPassword = document.getElementById("newPassword").value
@@ -14,15 +14,16 @@ document.getElementById("sign-up-btn").addEventListener("click", async () => {
         user_email: email,
         password: newPassword,
     }
+    console.log(requestBody)
     const response = await fetch('/api/users', {
         method: "POST",
         body: JSON.stringify(requestBody),
         headers: { 'Content-Type': 'application/json' },
     })
     if (response.ok) {
-        document.location.replace('/login');
+        document.location.replace('/');
     } else {
-        console.log('Error Signing up! ')
+        console.log('Error Signing up!')
     }
 })
 
@@ -32,7 +33,7 @@ const loginFormHandler = async (event) => {
     // Collect values from the login form
     const userName = document.querySelector('#username').value.trim();
     const password = document.querySelector('#password').value.trim();
-    if (email && password) {
+    if (userName && password) {
         // Send a POST request to the API endpoint
         const response = await fetch('/api/users/login', {
             method: 'POST',
@@ -43,7 +44,9 @@ const loginFormHandler = async (event) => {
             // If successful, redirect the browser to the profile page
             document.location.replace('/');
         } else {
-            alert(response.statusText);
+            const json = await response.json()
+            console.log(json)
+            alert(json.err);
         }
     }
 };
