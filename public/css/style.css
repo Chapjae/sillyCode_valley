@@ -27,10 +27,41 @@ body {
   justify-content: center;
 }
 
+
 .center-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 50vh;
+  padding-top: 100px; 
+}
+
+.login-form,
+.signup-form {
+  text-align: left;
+  width: 300px; /* Adjust the width as needed */
+  margin: 10px auto;
+}
+
+.login-form label,
+.signup-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-form input,
+.signup-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.login-form button,
+.signup-form button {
+  background-color: #7b00ff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
 }
