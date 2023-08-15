@@ -3,32 +3,32 @@ const cloudinary = require("cloudinary").v2;
 const { Video, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
-// const storeVideoData = async () => {
-//   try {
-//     const options = {
-//       resource_type: "video",
-//     };
-//     const result = await cloudinary.api.resources(options);
-//     for (const resource of result.resources) {
-//       if (resource.resource_type === "video") {
-//         const existingVideo = await Video.findOne({
-//           where: { link: resource.url },
-//         });
-//         if (!existingVideo) {
-//           await Video.create({
-//             link: resource.url,
-//           });
-//         }
-//       }
-//     }
-//     console.log("Video data stored successfully.");
-//   } catch (error) {
-//     console.error("Error storing video data:", error);
-//   }
-// };
+const storeVideoData = async () => {
+  try {
+    const options = {
+      resource_type: "video",
+    };
+    const result = await cloudinary.api.resources(options);
+    for (const resource of result.resources) {
+      if (resource.resource_type === "video") {
+        const existingVideo = await Video.findOne({
+          where: { link: resource.url },
+        });
+        if (!existingVideo) {
+          await Video.create({
+            link: resource.url,
+          });
+        }
+      }
+    }
+    console.log("Video data stored successfully.");
+  } catch (error) {
+    console.error("Error storing video data:", error);
+  }
+};
 
 router.get("/", async (req, res) => {
-  // storeVideoData();
+  storeVideoData();
   try {
     const videoData = await Video.findAll({
       // include: [
