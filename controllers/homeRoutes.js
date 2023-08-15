@@ -3,32 +3,32 @@ const cloudinary = require("cloudinary").v2;
 const { Video, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
-// const storeVideoData = async () => {
-//   try {
-//     const options = {
-//       resource_type: "video",
-//     };
-//     const result = await cloudinary.api.resources(options);
-//     for (const resource of result.resources) {
-//       if (resource.resource_type === "video") {
-//         const existingVideo = await Video.findOne({
-//           where: { link: resource.url },
-//         });
-//         if (!existingVideo) {
-//           await Video.create({
-//             link: resource.url,
-//           });
-//         }
-//       }
-//     }
-//     console.log("Video data stored successfully.");
-//   } catch (error) {
-//     console.error("Error storing video data:", error);
-//   }
-// };
+const storeVideoData = async () => {
+  try {
+    const options = {
+      resource_type: "video",
+    };
+    const result = await cloudinary.api.resources(options);
+    for (const resource of result.resources) {
+      if (resource.resource_type === "video") {
+        const existingVideo = await Video.findOne({
+          where: { link: resource.url },
+        });
+        if (!existingVideo) {
+          await Video.create({
+            link: resource.url,
+          });
+        }
+      }
+    }
+    console.log("Video data stored successfully.");
+  } catch (error) {
+    console.error("Error storing video data:", error);
+  }
+};
 
 router.get("/", async (req, res) => {
-  // storeVideoData();
+  await storeVideoData();
   try {
     const videoData = await Video.findAll({
       // include: [
@@ -45,7 +45,7 @@ router.get("/", async (req, res) => {
     });
     console.log(videos);
 
-    res.render("homepage", { videos });
+    res.render("homepage", { videos: videos,  logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -77,7 +77,7 @@ router.get("/comments/:id", withAuth, async (req, res) => {
     const comments = commentData.map((comment) => comment.get({ plain: true }));
 
     // Sending the fetched comment data instead of "comments"
-    res.render("comments", { comments, link });
+    res.render("comments", { comments, link, logged_in: req.session.logged_in});
   } catch (error) {
     console.error("Error fetching comments:", error);
     res.status(500).json({ error: "Error fetching comments." });
@@ -85,7 +85,7 @@ router.get("/comments/:id", withAuth, async (req, res) => {
 });
 
 router.get("/room", withAuth, (req, res) => {
-  res.render("room");
+  res.render("room", { logged_in: req.session.logged_in });
 });
 
 
