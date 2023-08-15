@@ -30,10 +30,10 @@
         </h1>
         <nav>
           <!-- Conditionally render login or logout links -->
-          {{!-- {{#if logged_in}} --}}
+          {{#if logged_in}}
             |
             <button class="button" id="logout">logout</button>
-          {{!-- {{/if}} --}}
+          {{/if}}
         </nav>
       </header>
       <main class="container container-fluid mt-5">
@@ -47,8 +47,8 @@
       we made this, we are very cool and SMRT and awesome!
     </footer>
   </body>
-    {{!-- {{#if logged_in}} --}}
+    {{#if logged_in}}
       <script src="/js/logout.js"></script>
-    {{!-- {{/if}} --}}
+    {{/if}}
 
 </html>
