@@ -4,6 +4,22 @@ let startButton = document.getElementById("startButton");
 let stopButton = document.getElementById("stopButton");
 let downloadButton = document.getElementById("downloadButton");
 let logElement = document.getElementById("log");
+let prompt = document.getElementById("prompt");
+
+
+
+function generatePrompt() {
+
+  let events = ["Ordering a pizza", "Giving an inspirational speech", "Reviewing a movie", "Hosting a nature show", "Running from a wild animal", 
+                "Anchoring for evening news", "Looking for a bathroom", "Singing a song", "Floating in space", "Hosting a cooking show", "Officiating a wedding", 
+                "Doing a pre-fight interview", "Programming your second project", "Selling a used car", "Returning clothes that are too small"]
+  let characters = ["Foghorn Leghorn", "Gollum", "Bernie Sanders", "An Auctioneer", "Arnold Schwarzenagger", "Kermit the Frog", "Jim Carey", "Hank Hill", "A Knight", "Mike Tyson", "A waiter", "Count Dracula",
+                "Dr. Evil", "Austin Powers"]
+
+
+}
+
+prompt.addEventListener("click", generatePrompt())
 
 let recordingTimeMS = 10000;
 var myWidget = cloudinary.createUploadWidget({
