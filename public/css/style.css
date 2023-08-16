@@ -1,3 +1,14 @@
+/* Default styles for all screen sizes */
+
+@media (max-width: 768px) {
+  /* Styles for screens up to 768px wide (tablets and smaller) */
+}
+
+@media (max-width: 576px) {
+  /* Styles for screens up to 576px wide (most smartphones) */
+}
+
+
 #video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
