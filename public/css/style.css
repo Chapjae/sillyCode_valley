@@ -93,3 +93,15 @@ body {
   border: none;
   cursor: pointer;
 }
+
+.comments {
+  border: solid;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.username,
+.pname {
+  margin-top: 25px;
+  padding-bottom: 1px;
+}

@@ -1,4 +1,4 @@
- <a href="/">Homepage</a>
+<button><a href="/">Homepage</a></button>
 
 <video controls width="250">
       <source src={{ link }} type="video/webm" />
@@ -7,9 +7,9 @@
 
 {{#each comments }}
 
-<p>{{ user.username }}</p>
+<div class="username"><p class="pname">{{ user.username }}:</p></div>
 
-<p>{{ comment_body }}</p>
+<div class="comments"><p>{{ comment_body }}</p></div>
 
 
 {{/each}}
