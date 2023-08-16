@@ -1,14 +1,3 @@
-/* Default styles for all screen sizes */
-
-@media (max-width: 768px) {
-  /* Styles for screens up to 768px wide (tablets and smaller) */
-}
-
-@media (max-width: 576px) {
-  /* Styles for screens up to 576px wide (most smartphones) */
-}
-
-
 #video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
@@ -130,6 +119,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+   /* Styles for screens up to 768px wide (tablets and smaller) */
   #video-grid {
     display: block; 
   }
@@ -142,5 +132,28 @@ body {
   }
   .center-container {
     padding-top: 0;
+  }
+  .header {
+    position: sticky
+  }
+}
+
+@media (max-width: 576px) {
+  /* Styles for screens up to 576px wide (most smartphones) */
+  #video-grid {
+    display: block; 
+  }
+  #video-grid video {
+    width: 100%; 
+    height: auto; 
+  }
+  .button {
+    width: 100%; 
+  }
+  .center-container {
+    padding-top: 0;
+  }
+  .header {
+    position: sticky
   }
 }
