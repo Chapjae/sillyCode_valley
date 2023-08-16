@@ -2,17 +2,19 @@
     <h2 id="improvPrompt" class="text-center">
       Prompt will appear here. Recordings will be 20 seconds long.
     </h2>
-    <ol class="text-center">Just a few pointers:
+    <ul id="list" class="text-center">Just a few pointers:
       <li>The prompt is just a suggestion</li>
       <li>If you don't know, make it up</li>
       <li>Don't think too much</li>
       <li>Have fun!</li>
-    </ol>
+    </ul>
   </div>
  <button><a href="/">Homepage</a></button>
-  <div id="video-grid" class="container-fluid d-flex justify-content-center">
+  <div id="video-grid" class="container-fluid d-flex justify-content-center lg">
+    <div class="video-wrapper"></div>
     <video id="localVideo" autoplay playsinline controls></video>
     <video id="recording" width="160" height="120" controls></video>
+    </div>
       <button id="startButton" class="button">Start Recording</button>
       <button class="button"><a id="downloadButton">Download</a></button>
 
