@@ -4,6 +4,10 @@
   grid-auto-rows: 300px;
 }
 
+#list {
+  list-style-type: none;
+}
+
 video {
   width: 100%;
   height: 100%;
@@ -104,4 +108,28 @@ body {
 .pname {
   margin-top: 25px;
   padding-bottom: 1px;
+}
+
+
+@media screen and (min-width: 992px) {
+  #video-grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #video-grid {
+    display: block; 
+  }
+  #video-grid video {
+    width: 100%; 
+    height: auto; 
+  }
+  .button {
+    width: 100%; 
+  }
+  .center-container {
+    padding-top: 0;
+  }
 }
