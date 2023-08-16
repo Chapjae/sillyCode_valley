@@ -19,7 +19,18 @@ video {
 }
 
 /* Andy added this syling below */
+a {
+  color: #fff;
+}
 
+button {
+  background-color: #7b00ff;
+  color: #fff;
+  padding: 10px 15px;
+  border: solid;
+  border-radius: 25px;
+  cursor: pointer;
+}
 
 body {
   background-color: rgba(177, 255, 252, 0.541);
@@ -36,6 +47,22 @@ body {
   justify-content: center;
   height: 50vh;
   padding-top: 320px; 
+}
+
+#make-video {
+  background-color: #7b00ff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+#logout {
+  background-color: #7b00ff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
 }
 
 .login-form,
@@ -65,4 +92,16 @@ body {
   padding: 10px 15px;
   border: none;
   cursor: pointer;
+}
+
+.comments {
+  border: solid;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.username,
+.pname {
+  margin-top: 25px;
+  padding-bottom: 1px;
 }
