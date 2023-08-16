@@ -20,7 +20,7 @@ If a user wasn't already signed in when they clicked the create video button, th
 *once users once users login, they will be taken to the room page*<br>
 ![Room Page](/images/room.png)<br>
 *Once a user press the generate prompt button, they will receive a random prompt to inspire their improv performance* <br>
-![Prompt Button](/images/promptbutton.png) ![Prompt](/images/prompt.png)<br.>
+![Prompt Button](/images/promptbutton.png) ![Prompt](/images/prompt.png)<br>
 Once a user presses the record button, the room will record their video and audio for 20 seconds. Upon completion, the user will be able to download their video with the download button, and then upload it using the Cloudinary widget.<br> 
 
 *once a user completes their recording, they can review it before downloading and uploading*<br>
